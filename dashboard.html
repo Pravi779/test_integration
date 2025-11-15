@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MoEngage</title>
+
+
+    <script type="text/javascript">
+	var moeDataCenter = "dc_3"; // Replace "DC" with the actual Data center value from the above table
+	var moeAppID = "A8BZ6B1HBBIB2K8574KUOJR9"; // Replace "WorkspaceID" available in the settings page of MoEngage Dashboard.
+	var sdkVersion = "2"; // Replace this value with the version of Web SDK that you intend to use. It is recommended to use the format x (major)
+	!function(e,n,i,t,a,r,o,d){if(!moeDataCenter||!moeDataCenter.match(/^dc_[0-9]+$/gm))return console.error("Data center has not been passed correctly. Please follow the SDK installation instruction carefully.");var s=e[a]=e[a]||[];if(s.invoked=0,s.initialised>0||s.invoked>0)return console.error("MoEngage Web SDK initialised multiple times. Please integrate the Web SDK only once!"),!1;e.moengage_object=a;var l={},g=function n(i){return function(){for(var n=arguments.length,t=Array(n),a=0;a<n;a++)t[a]=arguments[a];(e.moengage_q=e.moengage_q||[]).push({f:i,a:t})}},u=["track_event","add_user_attribute","add_first_name","add_last_name","add_email","add_mobile","add_user_name","add_gender","add_birthday","destroy_session","add_unique_user_id","update_unique_user_id","moe_events","call_web_push","track","location_type_attribute","identifyUser","getUserIdentities"],m={onsite:["getData","registerCallback","getSelfHandledOSM"]};for(var c in u)l[u[c]]=g(u[c]);for(var v in m)for(var f in m[v])null==l[v]&&(l[v]={}),l[v][m[v][f]]=g(v+"."+m[v][f]);r=n.createElement(i),o=n.getElementsByTagName("head")[0],r.async=1,r.src=t,o.appendChild(r),e.moe=e.moe||function(){return(s.invoked=s.invoked+1,s.invoked>1)?(console.error("MoEngage Web SDK initialised multiple times. Please integrate the Web SDK only once!"),!1):(d=arguments.length<=0?void 0:arguments[0],l)},r.addEventListener("load",function(){if(d)return e[a]=e.moe(d),e[a].initialised=e[a].initialised+1||1,!0}),r.addEventListener("error",function(){return console.error("Moengage Web SDK loading failed."),!1})}(window,document,"script","https://cdn.moengage.com/release/"+moeDataCenter+"/versions/"+sdkVersion+"/moe_webSdk.min.latest.js","Moengage");
+	 
+	Moengage = moe({
+	  app_id: moeAppID,
+	  debug_logs: 1
+	});
+	</script>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+        }
+
+        .account-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .account-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .welcome-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .moengage-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .moengage-info h2 {
+            color: #333;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .moengage-info p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>MoEngage Dashboard</h1>
+        <button class="account-btn" onclick="goToAccount()">Account</button>
+    </nav>
+
+    <div class="container">
+        <div class="welcome-section">
+            <h2 id="welcomeMessage">Welcome!</h2>
+        </div>
+
+        <div class="moengage-info">
+            <h2>About MoEngage</h2>
+            <p>
+                MoEngage is an intelligent customer engagement platform that allows businesses to deliver personalized experiences to their customers across multiple channels.
+            </p>
+            
+            <p>
+                Built for the customer-obsessed marketer, MoEngage creates a unified view of your customer across touchpoints, and optimizes the customer journey across the web, mobile, and email.
+            </p>
+
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Customer Analytics</h3>
+                    <p>Get deep insights into customer behavior with advanced analytics and reporting tools.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Omnichannel Engagement</h3>
+                    <p>Reach customers across email, SMS, push notifications, in-app messages, and web push.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Personalization</h3>
+                    <p>Deliver personalized experiences using AI-powered recommendations and dynamic content.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Marketing Automation</h3>
+                    <p>Create sophisticated customer journeys with drag-and-drop workflow builder.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>A/B Testing</h3>
+                    <p>Optimize campaigns with comprehensive A/B testing capabilities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Real-time Segmentation</h3>
+                    <p>Create dynamic customer segments based on real-time behavior and attributes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        
+        if (!currentUser) {
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('welcomeMessage').textContent = 
+                `Welcome, ${currentUser.firstName} ${currentUser.lastName}!`;
+        }
+
+        function goToAccount() {
+            Moengage.track_event("Account Button Clicked");
+            window.location.href = 'account.html';
+        }
+    </script>
+</body>
+</html>
